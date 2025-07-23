@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ExploraYa - Tu tienda de ropa en línea</title>
+  <link rel="icon" type="image/png" href="https://img.freepik.com/vector-premium/logotipo-tienda-ropa-hombres_752850-812.jpg?semt=ais_hybrid&w=740">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #800020;
+      margin: 0;
+      color: white;
+    }
+    header {
+      background-image: url(https://img-fotki.yandex.ru/get/6407/87848796.458/0_e3d38_c80716f1_orig.jpg);
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+      z-index: 1;
+    }
+    header h1 {
+      background-color: rgba(0, 0, 0, 0.5);
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 10px;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 1.5s ease-out;
+    }
+    nav {
+      background-color: #2c3e50;
+      padding: 10px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    nav a:hover {
+      color: #00f0ff;
+      transform: translateY(-2px);
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #00f0ff;
+      transition: width 0.3s ease;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    section {
+      padding: 40px 20px;
+    }
+    .intro {
+      background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+      text-align: center;
+      border-radius: 15px;
+      padding: 50px 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 1200px;
+      margin: 0 auto 50px;
+      position: relative;
+      overflow: hidden;
+    }
+    .intro::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+      animation: rotate 20s linear infinite;
+    }
+    .intro h2 {
+      color: #ffffff;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .intro p {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      font-size: 18px;
+      color: #dddddd;
+      line-height: 1.6;
+      position: relative;
+      z-index: 2;
+    }
+    .intro-image {
+      position: relative;
+      width: 60%;
+      max-width: 400px;
+      margin: 0 auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      transform: translateY(0);
+      transition: transform 0.5s ease;
+      z-index: 2;
+    }
+    .intro-image:hover {
+      transform: translateY(-10px);
+    }
+    .intro-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .highlight {
+      color: #00f0ff;
+      font-weight: bold;
+    }
+    
+    .contenedor {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .producto {
+      background-color: #2c3e50;
+      width: 300px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+    .producto:hover {
+      transform: scale(1.05);
+    }
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    h2 {
+      font-size: 20px;
+      color: #ffffff;
+      text-align: center;
+    }
+    p {
+      font-size: 14px;
+      color: #dddddd;
+    }
+    .boton-compra {
+      background-color: #27ae60;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    .boton-compra:hover {
+      background-color: #219150;
+    }
+    .contacto {
+      text-align: center;
+      padding: 20px;
+      background-color: #1a252f;
+      border-radius: 15px;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+    .contacto a {
+      text-decoration: none;
+      margin: 0 15px;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+    }
+    .contacto a:hover {
+      color: #00f0ff;
+    }
+    .contacto img {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .popup-contenido {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      animation: entrada 0.5s ease;
+      color: black;
+    }
+    .popup-contenido h2, .popup-contenido p {
+      color: black;
+    }
+    .cerrar {
+      margin-top: 15px;
+      padding: 8px 20px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    @keyframes entrada {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  
+    section, .contacto {
+      display: none;
+    }
+    section.activa, .contacto.activa {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>ExploraYa - Tu tienda de ropa en línea</h1>
+</header>
+
+<nav>
+  <a href="#" onclick="mostrarSeccion('intro')">Inicio</a>
+  <a href="#" onclick="mostrarSeccion('camisas')">Camisas</a>
+  <a href="#" onclick="mostrarSeccion('pantalones')">Pantalones</a>
+  <a href="#" onclick="mostrarSeccion('sueteres')">Suéteres</a>
+  <a href="#" onclick="mostrarSeccion('zapatos')">Zapatos</a>
+  <a href="#" onclick="mostrarSeccion('contacto')">Contacto</a>
+</nav>
+
+<section class="intro" id="intro">
+  <h2>ExploraYa - Tu estilo, tu identidad</h2>
+  <p>En <span class="highlight">ExploraYa</span> te ofrecemos una amplia variedad de ropa moderna, cómoda y asequible para todas las edades. Nuestro objetivo es que te sientas bien con lo que usas, sin gastar de más. La moda es una forma de expresión, ¡y queremos ayudarte a mostrar lo mejor de ti!</p>
+  
+  <div class="intro-image">
+    <img src="https://thumbs.dreamstime.com/b/hombres-de-moda-y-ropa-hombre-en-tienda-interior-o-para-comprar-dibujos-animados-planos-ilustraci%C3%B3n-dibujada-mano-plantillas-260234995.jpg" alt="Ejemplo">
+  </div>
+</section>
+
+<section id="camisas">
+  <h2>Camisas</h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://i.pinimg.com/1200x/d6/15/bb/d615bb696aafd1ef3647e5f41c05d1fa.jpg" alt="Camisa Blanca">
+      <h2>Camisa Blanca Clásica</h2>
+      <p>Perfecta para trabajo o eventos formales.</p>
+      <p><strong>Q120.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Camisa Blanca Clásica')">Comprar</button>
+    </div>
+    
+    <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://i.pinimg.com/1200x/d6/df/0c/d6df0c939faee4a4d2d5957dc03206af.jpg" alt="Camisa Negra">
+      <h2>Camisa Negra Clásica</h2>
+      <p>Perfecta para trabajo o eventos formales.</p>
+      <p><strong>Q125.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Camisa Negra Clásica')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://i.pinimg.com/736x/79/52/1c/79521c75d4ed2954296e5c6aeabce532.jpg" alt="Camisa Negra con Rayas">
+      <h2>Camisa Negra con Rayas</h2>
+      <p>Perfecta para un día en la playa.</p>
+      <p><strong>Q150.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Camisa Negra con Rayas')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://img.fantaskycdn.com/bee8e3b1769f20adff4ee8e1781a7a19_750x.jpeg" alt="Camisa Verde Muzgo">
+      <h2>Camisa Verde Muzgo</h2>
+      <p>Camisa informal de manga corta.</p>
+      <p><strong>Q200.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Camisa Verde Muzgo')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://i.pinimg.com/736x/3a/e7/be/3ae7be7d0794e56d93c382882eef39d3.jpg" alt="Camisa Polo">
+      <h2>Camisa Polo Blanca con rayas verdes</h2>
+      <p>Camisa informal de manga corta.</p>
+      <p><strong>Q0.50</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Camisa Polo Blanca con rayas verdes')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://m.media-amazon.com/images/I/61OfFzepVWL._AC_SX679_.jpg" alt="Camisa Polo">
+      <h2>Rayas Urbanas coleccion casual</h2>
+      <p>Camisa blanca con rayas negras ideal para tu look.</p>
+      <p><strong>Q.60.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Rayas Urbanas')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://www.basketballemotion.com/imagesarticulos/273830/medianas/camiseta-nike-los-angeles-lakers-icon-edition-swingman-luka-doncic-amarillo-0.webp" alt="Camisa Polo">
+      <h2>Camisa Oficial Lakers #77 Edición Fan</h2>
+      <p>Luce los colores de los lakers con esta camiseta oficial en color amarillo vibrante.</p>
+      <p><strong>Q.89.99</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Camisa Lakers #77')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://m.media-amazon.com/images/I/31wfgwe4AyL._SY1000_.jpg" alt="Camisa Polo">
+      <h2>Camisa Elastica ConfortFit de Manga Larga</h2>
+      <p>Eleva tu estilo con nuestra Camisa de vestir Clasica Skyline.  talla S</p>
+      <p><strong>Q.80.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Camisa Elastica ConfortFit')">Comprar</button>
+    </div>
+  </div>
+  
+   <h2></h2>
+    <div class="producto">
+      <img src="https://i.pinimg.com/1200x/a5/7b/5c/a57b5c3af8531b36e6be94d7afa5f581.jpg" alt="Camisa Polo">
+      <h2>Camisa Polo Ralph Lauren color azul</h2>
+      <p>Talla M.</p>
+      <p><strong>Q100.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Camisa Polo Ralph Lauren')">Comprar</button>
+    </div>
+
+<h2></h2>
+    <div class="producto">
+      <img src="https://i.pinimg.com/736x/e6/97/08/e697080239d14e28a0517f60af3a8464.jpg" alt="Camisa Polo">
+      <h2>Camiseta Básica Blanca</h2>
+      <p> La base Perfecta para cualquier atuendo.</p>
+      <p><strong>Q50.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Camisa Básica Blanca')">Comprar</button>
+    </div>
+
+<h2></h2>
+    <div class="producto">
+      <img src="https://m.media-amazon.com/images/I/21B4umzDTsL._UY1000_.jpg" alt="Camisa Polo">
+      <h2>Camiseta Básica color Negro</h2>
+      <p> Camiseta Negra lo más elegante que encontraras.</p>
+      <p><strong>Q50.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Camisa Básica color Negro')">Comprar</button>
+    </div>
+
+<h2></h2>
+    <div class="producto">
+      <img src="https://http2.mlstatic.com/D_NQ_NP_921430-MLA83102662938_032025-O.webp" alt="Camisa Polo">
+      <h2>Playera Original Monogram Perfecto a tu personalidad.</h2>
+      <p> Talla M</p>
+      <p><strong> Q390.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Playera Monogram')">Comprar</button>
+    </div>
+  </div>
+</section>
+ 
+<section id="pantalones">
+  <h2>Pantalones</h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://i.pinimg.com/1200x/aa/8f/a5/aa8fa5c17c6138b8a6f8eaf8c30a613b.jpg" alt="Denim Jeans Negro">
+      <h2>Denim Jeans Negro</h2>
+      <p>Modernos, resistentes y cómodos.</p>
+      <p><strong>Q180.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Denim Jeans Negro')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://ae01.alicdn.com/kf/Sc77cbad3991443db9df4e95666aaf908y.jpg" alt="Denim Jeans Negro">
+      <h2>Pantalones Bombachos holgados</h2>
+      <p>Comodidad y Estilo Inigualable.</p>
+      <p><strong>Q170.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Pantalones Bombachos holgados')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://s.alicdn.com/@sc04/kf/A1d88079515fa41258d76d9445ef7df3c1.jpg_300x300.jpg" alt="Denim Jeans Negro">
+      <h2> Urban Baggy</h2>
+      <p>Sumérgete en la tendencia retro urbana con nuestros Jeans Baggy Retro.</p>
+      <p><strong>Q200.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup(' Urban Baggy')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://madmenmagazine.com/wp-content/uploads/2018/08/tiposdepantalonesparahombre.madmenmagazine7.jpg" alt="Denim Jeans Negro">
+      <h2> Pantalon Essentials Liso</h2>
+      <p>Estilo y comodidad para cada ocasión. ¡Renueva tu look hoy!</p>
+      <p><strong>Q190.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Pantalon Essentials Liso')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://img01.ztat.net/article/spp-media-p1/03b4727fe8854f31979822a0d5388bd9/5c7bdfb7a84e4420acf9c965198897d9.jpg?imwidth=762" alt="Denim Jeans Negro">
+      <h2> INDICODE JEANS BROADWICK</h2>
+      <p>Pantalones Cargo, comodos y atractivos</p>
+      <p><strong>Q140.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('INDICODE JEANS BROADWICK')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://i.pinimg.com/1200x/a8/d9/5d/a8d95d0eb096d1c1f7a2ddfd78b9ea05.jpg" alt="Jeans de Mezclilla">
+      <h2>Jeans de Mezclilla desgastados</h2>
+      <p>Modernos, resistentes y cómodos.</p>
+      <p><strong>Q300.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Jeans de Mezclilla desgastados')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://i.pinimg.com/1200x/d1/4c/2e/d14c2ece0d5ccca1100d8948cecbc637.jpg" alt="Jeans de Mezclilla">
+      <h2>Pantalón Vaquero</h2>
+      <p>De Pierna recta y Bolsillos en diagonal y corte recto.</p>
+      <p><strong>Q300.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Pantalón Vaquero')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://i.pinimg.com/736x/30/cf/61/30cf61fbe6f9588dcbcb2922e3c84f8c.jpg" alt="Jeans de Mezclilla">
+      <h2>Jeans cargo con bolsillos lateral solapa</h2>
+      <p> Muy atractivo, y compralo Ya!!.</p>
+      <p><strong>Q120.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Jeans cargo con bolsillos lateral solapa')">Comprar</button>
+    </div>
+  
+   <h2></h2>
+    <div class="producto">
+      <img src="https://m.media-amazon.com/images/I/619Xk1nvyNL._UY1000_.jpg" alt="Jeans de Mezclilla">
+      <h2>Pantalones de exterior Hipster, Ancha</h2>
+      <p> Talla Grande.</p>
+      <p><strong>Q200.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Pantalones de exterior Hipster, Ancha')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://m.media-amazon.com/images/I/71Y6I+CXECL._UY1000_.jpg" alt="Jeans de Mezclilla">
+      <h2>LianMengMVP</h2>
+      <p> Pantalon de Tubo con cordón elástico.</p>
+      <p><strong>Q160.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('LianMengMVP')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://img01.ztat.net/article/spp-media-p1/934f687e6b74490ab6746b802442844a/1d5d4848d5dc4ea3a2b25cd05b3637c6.jpg?imwidth=300" alt="Jeans de Mezclilla">
+      <h2>Chándal beige</h2>
+      <p> Talla M Disponible.</p>
+      <p><strong>Q140.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Chándal beige')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://i.pinimg.com/1200x/97/62/7e/97627e6e6ab2ddb89018aff3c56015ca.jpg" alt="Jeans de Mezclilla">
+      <h2>blue fade jean</h2>
+      <p>De buena calidad.</p>
+      <p><strong>Q350.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('blue fade jean')">Comprar</button>
+    </div>
+  </div>
+</section>
+
+<section id="sueteres">
+  <h2>Suéteres</h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://i.pinimg.com/736x/ed/e0/d5/ede0d5bb366cb6fe4b0fddc74ca7f10a.jpg" alt="Suéter de Lana">
+      <h2>Suéter de Lana, color negro</h2>
+      <p>Ideal para el frío.</p>
+      <p><strong>Q150.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Suéter de Lana')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://i.pinimg.com/736x/1e/df/68/1edf68cae486658dc17151e9eed878f4.jpg" alt="Suéter de Lana">
+      <h2>Chaqueta bomber color azul</h2>
+      <p>Chaqueta ligera con cremallera completa, talla M.</p>
+      <p><strong>Q150.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Chaqueta bomber')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://m.media-amazon.com/images/I/71IMYpFZlCL._AC_SX679_.jpg" alt="Suéter de Lana">
+      <h2>Sueter de lana de rayas anchas</h2>
+      <p>Cuello Redondo ideal para casa.</p>
+      <p><strong>Q50.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Sueter de lana de rayas ancha')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://images.fashiola.mx/product-list/300x450/revolve/566413299/sudadera-raven-en-color-talla-m-en-black-talla-m-tambien-en-s-xl-xs.webp" alt="Suéter de Lana">
+      <h2>Sueter Cardigans AllSaints</h2>
+      <p>Comodo y Ligero Talla M.</p>
+      <p><strong>Q70.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Sueter Cardigans AllSaints')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://s.alicdn.com/@sc04/kf/H125cde65535e4741a508cb7999acd68eB/Clothing-Manufacturer-Customized-Logo-Oem-Odm-New-Wool-Hoodie-Knit-Men-s-Loose-Fashion-Knit-Cardigan-Model-Hoodie-Sweater.jpg_300x300.jpg" alt="Suéter de Lana">
+      <h2>Model sweater for men clasico</h2>
+      <p>Ideal para los Jovenes.</p>
+      <p><strong>Q70.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Model sweater for men')">Comprar</button>
+
+  </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://caterpillargt.com/cdn/shop/files/30084721-1_1024x1024.jpg?v=1751436598" alt="Suéter de Lana">
+      <h2>Chaqueta CAT</h2>
+      <p>Al toque Perfecto para cualquier Outfit.</p>
+      <p><strong>Q290.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Chaqueta CAT')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://m.media-amazon.com/images/I/517GvcmiE9L._AC_SL1050_.jpg" alt="Suéter de Lana">
+      <h2>Sueter de Algodon con media cierre</h2>
+      <p>Talla M.</p>
+      <p><strong>Q100.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Sueter de Algodon con media cierre')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://catlifestyle.com.bo/wp-content/uploads/2025/05/4040182_12269_DARK-STONE_01_LF.jpg" alt="Suéter de Lana">
+      <h2>Blue Street</h2>
+      <p>Diseñado para acompañarte en el día a día.</p>
+      <p><strong>Q300.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Blue Street')">Comprar</buBlue Streettton>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://m.media-amazon.com/images/I/61TbHGPzgDL._AC_SL1500_.jpg" alt="Suéter de Lana">
+      <h2>Chaqueta color s lido de forro de polar</h2>
+      <p>Facil de combinar y lista para cualquier ocasión.</p>
+      <p><strong>Q350.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Chaqueta color s lido ')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://m.media-amazon.com/images/I/71II+HP8MML._AC_SX385_.jpg" alt="Suéter de Lana">
+      <h2>Chaqueta de lana de Cordero</h2>
+      <p>Su corte cómodo y su color clásico hacen que nunca pase de moda.</p>
+      <p><strong>Q400.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Chaqueta de lana de Cordero')">Comprar</button>
+    </div>  
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://sumerlabs.com/default/image-tool-lambda?new-width=0&new-height=0&new-quality=25&url-image=https%3A%2F%2Fsumerlabs.com%2Fsumer-app-90b8f.appspot.com%2Fproduct_photos%252Fa4c0104794e3394e64d1c78963287952%252Fbdeea040-795b-11ec-87d0-791e7b4b2ee3%3Falt%3Dmedia%26token%3Df61cb8d0-5432-495f-b9be-22805a3b9e59" alt="Suéter de Lana">
+      <h2>Chumpa de Cuero Azul</h2>
+      <p>Perfecto para un estilo audaz y elegante.</p>
+      <p><strong>Q300.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Chumpa de Cuero')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+    <div class="producto">
+      <img src="https://centralmarket.gt/images/detailed/56/suetercaballero_979f3067-9f2a-42d2-9442-aed53cf1bc8b_61ky-06.jpg" alt="Suéter de Lana">
+      <h2>Sueter Azul Marino</h2>
+      <p>Ideal para un paseo, talla S.</p>
+      <p><strong>Q150.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Sueter Azul Marino')">Comprar</button>
+    </div>
+  </div>
+</section>
+
+<section id="zapatos">
+  <h2>Zapatos</h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://img.pacifiko.com/PROD/resize/1/500x500/_1725903236.png" alt="Zapatos Negros">
+      <h2>Zapatos casuales fortis topo oxfort</h2>
+      <p>Elegantes y cómodos. Perfectos para cualquier ocasión, talla 35.</p>
+      <p><strong>Q260.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Zapatos casuales fortis')">Comprar</button>
+    </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://imagenes.elpais.com/resizer/v2/H6TNAEMH7RHM5DOBPIY3B5MHYE.png?auth=2aa35f8d543dc7f8ec0f39e6812742061be853f9f07178c0be7c29d4a7ea9b62&width=1960&height=1470&smart=true" alt="Zapatos Negros">
+      <h2>Neón Run</h2>
+      <p>Zapato retro con estilo clásico.</p>
+      <p><strong>Q290.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Neón Run')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://image.made-in-china.com/202f0j00UIqbNMtRVEuL/Nike-Dunk-Low-Batman-Black-White-FC1688-300-Wholesale-Athletic-Sports-Women-Luxury-Basketball-Branded-Shoe-Men-Sneaker.webp" alt="Zapatos Negros">
+      <h2>Nike Dunk Low Batman</h2>
+      <p>Diseño moderno con un toque urbano.</p>
+      <p><strong>Q300.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Nike Dunk Low Batman')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://eligetunumero.cl/wp-content/uploads/2022/05/rs19534-2-40-2-e1522a7b-1052-42ad-9c81-b7447174ce84-400x400.jpg" alt="Zapatos Negros">
+      <h2>Noble Suela</h2>
+      <p>Diseño formal con acabados finos.</p>
+      <p><strong>Q220.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Noble Suela')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://imagenes.elpais.com/resizer/v2/Q6GCA3SWJVFNLKONMV2EQ6NCCY.jpg?auth=62260a6feafa610e4bba38200be2ddb4052120e3493d0076f4d29b71c38646a8&width=1960" alt="Zapatos Negros">
+      <h2>Cuero Fino Azul</h2>
+      <p>Elegante y Natural.</p>
+      <p><strong>Q330.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Cuero Fino Azul')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://www.moov.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dwa5512f0b/products/NIFN5215-141/NIFN5215-141-6.JPG" alt="Zapatos Negros">
+      <h2>Air Jordan 1</h2>
+      <p>Estilo clásico con distinción.</p>
+      <p><strong>Q200.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Air Jordan 1')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://m.media-amazon.com/images/I/61bVEYI6-TL._UF894,1000_QL80_.jpg" alt="Zapatos Negros">
+      <h2>FAJIA</h2>
+      <p>Zapatos de vestir para hombres.</p>
+      <p><strong>Q390.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('FAJIA')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://i.ebayimg.com/thumbs/images/g/60QAAOSwsuFnt8hj/s-l1200.jpg" alt="Zapatos Negros">
+      <h2>Alexander McQueen</h2>
+      <p>Con un gran estilo a tu comodidad.</p>
+      <p><strong>Q400.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('McQueen')">Comprar</button>
+    </div>
+  </div>
+  
+   <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://images-cdn.ubuy.gt/680fdb7c56ff0747e20edc18-size-9-alexander-mcqueen-oversized.jpg" alt="Zapatos Negros">
+      <h2>Alexander McQueen color Blanco</h2>
+      <p>Refinado y Moderno.</p>
+      <p><strong>Q450.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Alexander McQueen color Blanco')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://mariohernandezvzl.vteximg.com.br/arquivos/ids/236370-287-390/-Hombre-Vuelo-Hielo-tenis-vuelo-hielo-1.jpg?v=638763601604770000" alt="Zapatos Negros">
+      <h2>Tenis Blanclo básico</h2>
+      <p>Facil de Combinar y verte Lucir.</p>
+      <p><strong>Q220.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Tenis Blanclo básic')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://www.safgard.com/_cache/images/products/stma1w6b-profile-350x350-t.jpg" alt="Zapatos Negros">
+      <h2>Zapato de Trabajo</h2>
+      <p>Seguro y resistente.</p>
+      <p><strong>Q300.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Zapato de Trabajo')">Comprar</button>
+    </div>
+  </div>
+  
+  <h2></h2>
+  <div class="contenedor">
+    <div class="producto">
+      <img src="https://down-mx.img.susercontent.com/file/9f98db16a3ebf0605b2c3774d64df99e" alt="Zapatos Negros">
+      <h2>Tenis de Hombre</h2>
+      <p>Con diseño exclusivo, talla 37.</p>
+      <p><strong>Q150.00</strong></p>
+      <button class="boton-compra" onclick="mostrarPopup('Tenis')">Comprar</button>
+    </div>
+  </div>
+</section>
+
+<div class="contacto" id="contacto">
+  <h3>Contáctanos</h3>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="Ejemplo" style="max-width: 2%; height: auto; border-radius: 10px; margin-top: 20px;">
+  <a href="https://wa.me/50246543463" target="_blank">WhatsApp</a>
+  <img src="https://e7.pngegg.com/pngimages/881/200/png-clipart-mailing-envelope-logo-email-marketing-computer-icons-email-miscellaneous-web-design.png" alt="Ejemplo" style="max-width: 2%; height: auto; border-radius: 10px; margin-top: 20px;">
+  <a href="mailto:raulbernal598@gmail.com">Correo</a>
+  <img src="https://images.vexels.com/media/users/3/140965/isolated/preview/a945eef28564ae85fff5ac18adf637d9-icono-de-telefono-redondo.png" alt="Ejemplo" style="max-width: 2%; height: auto; border-radius: 10px; margin-top: 20px;">
+  <a href="tel:+50246543463">Llamada</a>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtfbcYeYgf0wQJ-LSPm3CPbyB7T1p0f5bnaA&s" alt="Ejemplo" style="max-width: 2%; height: auto; border-radius: 10px; margin-top: 20px;">
+  <a href="https://www.facebook.com/share/1EDn1viVui/" target="_blank">Facebook</a>
+  <img src="https://e7.pngegg.com/pngimages/722/1011/png-clipart-logo-icon-instagram-logo-instagram-logo-purple-violet-thumbnail.png" alt="Ejemplo" style="max-width: 2%; height: auto; border-radius: 10px; margin-top: 20px;">
+  <a href="https://www.instagram.com/kaxh_7.9?igsh=dGdtYnNlZnY4YTA3" target="_blank">Instagram</a>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-contenido">
+    <img src="https://www.regalosdelvirrey.com.ar/images/compra-exitosa.png" alt="Éxito">
+    <h2>¡Compra realizada!</h2>
+    <p id="mensajeProducto"></p>
+    <button class="cerrar" onclick="cerrarPopup()">Aceptar</button>
+  </div>
+</div>
+
+<script>
+  function mostrarPopup(producto) {
+    document.getElementById("mensajeProducto").innerText = "Has comprado: " + producto + ". Te contactaremos pronto.";
+    document.getElementById("popup").style.display = "flex";
+  }
+
+  function cerrarPopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+</script>
+
+
+<script>
+  function mostrarSeccion(id) {
+    const secciones = document.querySelectorAll("section, .contacto");
+    secciones.forEach(sec => sec.classList.remove("activa"));
+    const activa = document.getElementById(id);
+    if (activa) activa.classList.add("activa");
+  }
+
+  // Mostrar "Inicio" al cargar
+  window.onload = () => mostrarSeccion('intro');
+</script>
+
+</body>
+</html>
