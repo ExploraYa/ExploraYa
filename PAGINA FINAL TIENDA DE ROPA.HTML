@@ -304,6 +304,23 @@
     section.activa, .contacto.activa {
       display: block;
     }
+    .intro-image .imagenes-fila {
+     display: flex;
+     gap: 20px;
+     justify-content: center;
+     align-items: center;
+    }
+    .intro-image .imagenes-fila img {
+     width: 48%;
+     max-width: 190px;
+     border-radius: 15px;
+     box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+     transition: transform 0.5s, box-shadow 0.5s;
+    }
+    .intro-image .imagenes-fila img:hover {
+     transform: rotate(-3deg) scale(1.07);
+     box-shadow: 0 0 30px #00f0ff66;
+    }
   </style>
 </head>
 <body>
@@ -319,17 +336,17 @@
   <a href="#" onclick="mostrarSeccion('zapatos')">Zapatos</a>
   <a href="#" onclick="mostrarSeccion('contacto')">Contacto</a>
 </nav>
-
 <section class="intro" id="intro">
   <h2>ExploraYa - Tu estilo, tu identidad</h2>
   <p>En <span class="highlight">ExploraYa</span> te ofrecemos una amplia variedad de ropa moderna, cómoda y accesible para todas las edades. Nuestro objetivo es que te sientas bien con lo que usas, sin gastar de más. La moda es una forma de expresión, ¡y queremos ayudarte a mostrar lo mejor de ti!</p>
   
   <div class="intro-image">
-    <img src="https://thumbs.dreamstime.com/b/hombres-de-moda-y-ropa-hombre-en-tienda-interior-o-para-comprar-dibujos-animados-planos-ilustraci%C3%B3n-dibujada-mano-plantillas-260234995.jpg" alt="Ejemplo">
-    <h2></h2>
-    <img src="https://media.istockphoto.com/id/504271564/es/vector/tienda-de-ropa-para-men2.jpg?s=612x612&w=0&k=20&c=VYWTLE5xxNCio5rRYxyDard7bRUOSk8-RyGMF41M-xU=" alt="Ejemplo">
+    <div class="imagenes-fila">
+      <img src="https://thumbs.dreamstime.com/b/hombres-de-moda-y-ropa-hombre-en-tienda-interior-o-para-comprar-dibujos-animados-planos-ilustraci%C3%B3n-dibujada-mano-plantillas-260234995.jpg" alt="Ejemplo">
+      <img src="https://media.istockphoto.com/id/504271564/es/vector/tienda-de-ropa-para-men2.jpg?s=612x612&w=0&k=20&c=VYWTLE5xxNCio5rRYxyDard7bRUOSk8-RyGMF41M-xU=" alt="Ejemplo">
+    </div>
   </div>
- <a href="#" onclick="mostrarSeccion('camisas')" class="catalogo-btn">¡Ver catálogo!</a>
+  <a href="#" onclick="mostrarSeccion('camisas')" class="catalogo-btn">¡Ver catálogo!</a>
 </section>
 <section id="camisas">
   <h2>Camisas</h2>
